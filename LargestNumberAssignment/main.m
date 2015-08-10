@@ -60,6 +60,23 @@ id GetLargestValueBySorting(NSArray* array){
 }
 
 
+void TestArray(NSArray* array, NSString* testName){
+
+    NSLog(@"Test: %@", testName);
+
+    int indexOfLargest = GetIndexOfLargest(array);
+    if (indexOfLargest > -1)
+        NSLog(@"Largest item is %@ at index %d.", array[indexOfLargest], indexOfLargest);
+    else
+        NSLog(@"Array is empty and has no largest value");
+
+    NSLog(@"Largest value by sorting: %@", GetLargestValueBySorting(array));
+
+    NSLog(@"\n\n\n");
+
+    
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 
@@ -67,67 +84,31 @@ int main(int argc, const char * argv[]) {
         
         NSArray* array2 = @[@44, @5, @6];
         
-        NSArray* array3 = @[];
+        NSArray* emptyArray = @[];
         
-        NSArray* array4 = @[@11.999999, @2.8, @4.5, @-101.2, @12.0, @M_1_PI];
+        NSArray* oneItemArray = @[ @9 ];
         
-        NSArray* array5 = @[ @34, @34.1 ];
+        NSArray* floatArray = @[@11.999999, @2.8, @4.5, @-101.2, @12.0, @M_1_PI];
         
-        NSArray* array6 = [array1 arrayByAddingObjectsFromArray: array2];
+        NSArray* floatAndIntArray = @[ @34, @34.1, @29, @29.8 ];
+        
+        NSArray* concatenatedArray = [array1 arrayByAddingObjectsFromArray: array2];
 
         // No type checking is explicitly performed but NSString will work as well as
         // NSNumber.  Mixed-type arrays with strings and numbers will cause an exception.
-        NSArray* array7 = @[@"one", @"hello", @"twentythree", @"HELLO"];
+        NSArray* stringArray = @[@"one", @"hello", @"twentythree", @"HELLO"];
 
-        int indexOfLargest = GetIndexOfLargest(array1);
-        if (indexOfLargest > -1)
-            NSLog(@"Largest item in array 1 is %@ at index %d.", array1[indexOfLargest], indexOfLargest);
-        else
-            NSLog(@"Array 1 is empty and has no largest value");
+        TestArray(array1, @"Array 1");
+        TestArray(array2, @"Array 2");
+        TestArray(emptyArray, @"empty array");
+        TestArray(oneItemArray, @"single item");
+        TestArray(floatArray, @"floats");
+        TestArray(floatAndIntArray, @"floats and ints");
+        TestArray(concatenatedArray, @"Concatenated Array");
+        TestArray(stringArray, @"String Array");
         
-        indexOfLargest = GetIndexOfLargest(array2);
-        if (indexOfLargest > -1)
-            NSLog(@"Largest item in array 2 is %@ at index %d.", array2[indexOfLargest], indexOfLargest);
-        else
-            NSLog(@"Array 2 is empty and has no largest value");
 
-        indexOfLargest = GetIndexOfLargest(array3);
-        if (indexOfLargest > -1)
-            NSLog(@"Largest item in array 3 is %@ at index %d.", array3[indexOfLargest], indexOfLargest);
-        else
-            NSLog(@"Array 3 is empty and has no largest value.");
-    
-        indexOfLargest = GetIndexOfLargest(array4);
-        if (indexOfLargest > -1)
-            NSLog(@"Largest item in array 4 is %@ at index %d.", array4[indexOfLargest], indexOfLargest);
-        else
-            NSLog(@"Array 4 is empty and has no largest value.");
         
-        indexOfLargest = GetIndexOfLargest(array5);
-        if (indexOfLargest > -1)
-            NSLog(@"Largest item in array 5 is %@ at index %d.", array5[indexOfLargest], indexOfLargest);
-        else
-            NSLog(@"Array 5 is empty and has no largest value.");
-        
-        indexOfLargest = GetIndexOfLargest(array6);
-        if (indexOfLargest > -1)
-            NSLog(@"Largest item in array 6 is %@ at index %d.", array6[indexOfLargest], indexOfLargest);
-        else
-            NSLog(@"Array 6 is empty and has no largest value.");
-        
-        indexOfLargest = GetIndexOfLargest(array7);
-        if (indexOfLargest > -1)
-            NSLog(@"Largest item in array 7 is %@ at index %d.", array7[indexOfLargest], indexOfLargest);
-        else
-            NSLog(@"Array 7 is empty and has no largest value.");
-        
-        NSLog(@"Largest value by sorting: %@", GetLargestValueBySorting(array1));
-        NSLog(@"Largest value by sorting: %@", GetLargestValueBySorting(array2));
-        NSLog(@"Largest value by sorting: %@", GetLargestValueBySorting(array3));
-        NSLog(@"Largest value by sorting: %@", GetLargestValueBySorting(array4));
-        NSLog(@"Largest value by sorting: %@", GetLargestValueBySorting(array5));
-        NSLog(@"Largest value by sorting: %@", GetLargestValueBySorting(array7));
-    
     }
     return 0;
 }
