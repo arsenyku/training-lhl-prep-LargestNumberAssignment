@@ -59,7 +59,18 @@ id GetLargestValueBySorting(NSArray* array){
     return sorted[0];
 }
 
-
+// TestArray
+//
+// Execute the relevant methods and check the result for extracting the
+// largest element from an array
+//
+// Parameters:
+// array - the array of values to evaluate.  Entries are expected
+//         to be of type NSNumber but no explicit enforcement or
+//         type checking is performed.
+//
+// testName - a short description of the test being performed.
+//
 void TestArray(NSArray* array, NSString* testName){
 
     NSLog(@"Test: %@", testName);
